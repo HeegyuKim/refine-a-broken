@@ -6,7 +6,7 @@
 
 
 # llm-attack
-we make gcg attack data with [repogitory](https://github.com/llm-attacks/llm-attacks) made by Authors of [Universal and Transferable Adversarial Attacks on Aligned Language Models](https://arxiv.org/abs/2307.15043)
+we make gcg attack data with [repogitory](https://github.com/llm-attacks/llm-attacks) made by Authors of ["Universal and Transferable Adversarial Attacks on Aligned Language Models"](https://arxiv.org/abs/2307.15043)
 <br/>and only add parse code for find best control for each goals
 
 1. run llm-attack (check [this](https://github.com/llm-attacks/llm-attacks]))
