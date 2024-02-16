@@ -4,9 +4,9 @@ uvicorn
 pydantic
 transformers==4.36.2
 retry
+gradio==4.17.0
 gradio_client==0.9.0
-gradio==3.50.2
-fschat==0.2.20
+fschat
 nltk
 numpy
 openai
