@@ -2,7 +2,7 @@ from tqdm.auto import tqdm
 from glob import glob
 import jsonlines as jl
 import os
-from run.ppo.ppo_utils import RewardAPI
+from .rm_utils import RewardAPI
 from fire import Fire
 
 
@@ -28,7 +28,7 @@ def main(
             res_scores = api.get_scores_items(prompts, responses)
 
             for item, help, safe in zip(items[i:end_i], res_scores["helpful"]['scores'], res_scores["safety"]['scores']):
-                # item['score-safety'] = safe 
+                # item['score-safety'] = safe
                 # helpful swap only
                 item['score-helpful'] = help
 
