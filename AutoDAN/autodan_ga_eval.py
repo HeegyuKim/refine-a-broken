@@ -6,6 +6,8 @@ import torch.nn as nn
 from utils.opt_utils import get_score_autodan, autodan_sample_control
 from utils.opt_utils import load_model_and_tokenizer, autodan_sample_control_hga
 from utils.string_utils import autodan_SuffixManager, load_conversation_template
+from models import model_path_dicts, get_developer
+
 import time
 import argparse
 import pandas as pd
@@ -79,21 +81,10 @@ def get_args():
     return args
 
 
-def get_developer(model_name):
-    developer_dict = {"llama2": "Meta", "vicuna": "LMSYS",
-                      "guanaco": "TheBlokeAI", "WizardLM": "WizardLM",
-                      "mpt-chat": "MosaicML", "mpt-instruct": "MosaicML", "falcon": "TII"}
-    return developer_dict[model_name]
-
-
 if __name__ == '__main__':
     args = get_args()
     device = f'cuda:{args.device}'
 
-    model_path_dicts = {"llama2": "meta-llama/Llama-2-7b-chat-hf", "vicuna": "./models/vicuna/vicuna-7b-v1.3",
-                        "guanaco": "./models/guanaco/guanaco-7B-HF", "WizardLM": "./models/WizardLM/WizardLM-7B-V1.0",
-                        "mpt-chat": "./models/mpt/mpt-7b-chat", "mpt-instruct": "./models/mpt/mpt-7b-instruct",
-                        "falcon": "./models/falcon/falcon-7b-instruct"}
     model_path = model_path_dicts[args.model]
     template_name = args.model
 
@@ -153,7 +144,6 @@ if __name__ == '__main__':
 
     model, tokenizer = load_model_and_tokenizer(model_path,
                                                 low_cpu_mem_usage=True,
-                                                use_cache=False,
                                                 device=device)
     conv_template = load_conversation_template(template_name)
 
